@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import BreadBottom from './breadBottom/BreadBottom';
 import BreadTop from './breadTop/BreadTop';
 import Bacon from './bacon/Bacon';
@@ -23,6 +24,10 @@ const ingredient = ({ type }) => {
     default:
       return null;
   }
+};
+
+ingredient.propTypes = {
+  type: PropTypes.string.isRequired
 };
 
 export default ingredient;
