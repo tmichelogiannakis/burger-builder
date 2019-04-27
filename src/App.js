@@ -1,7 +1,8 @@
 import React from 'react';
+import Layout from './layout/Layout';
 
 function App() {
-  return <div>Placeholder</div>;
+  return <Layout>Placeholder</Layout>;
 }
 
 export default App;
