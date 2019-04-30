@@ -21,7 +21,7 @@ const burger = ({ className, ingredients }) => {
 
 export default styled(burger)`
   width: 100%;
-  margin: auto;
+  margin: 0 auto 16px auto;
   height: 250px;
   overflow: auto;
   text-align: center;
