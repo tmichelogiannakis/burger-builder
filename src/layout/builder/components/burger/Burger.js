@@ -3,14 +3,17 @@ import styled from 'styled-components';
 
 import Ingredient from './ingredient/Ingredient';
 
-const burger = ({ className }) => {
+const burger = ({ className, ingredients }) => {
+  const ingredientComponents = Object.entries(ingredients).reduce(
+    (accumulator, [ingredient, length]) =>
+      accumulator.concat(Array.from({ length }, (_, i) => <Ingredient key={`${ingredient}-${i}`} type={ingredient} />)),
+    []
+  );
   return (
     <div className={className}>
       <Ingredient type="bread-top" />
-      <Ingredient type="meat" />
-      <Ingredient type="salad" />
-      <Ingredient type="cheese" />
-      <Ingredient type="bacon" />
+      {ingredientComponents}
+      {ingredientComponents.length === 0 && <p>Please start adding ingredients</p>}
       <Ingredient type="bread-bottom" />
     </div>
   );
