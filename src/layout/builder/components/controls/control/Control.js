@@ -51,11 +51,11 @@ const MoreButton = styled(Button)`
   }
 `;
 
-const control = ({ className, label, removed, added }) => {
+const control = ({ className, label, disabled, removed, added }) => {
   return (
     <div className={className}>
       <Label>{label}</Label>
-      <LessButton onClick={removed}>Less</LessButton>
+      <LessButton onClick={removed} disabled={disabled}>Less</LessButton>
       <MoreButton onClick={added}>More</MoreButton>
     </div>
   );

@@ -9,13 +9,19 @@ const items = [
   { label: 'Salad', type: 'salad' }
 ];
 
-const controls = ({ className, ingredientAdded, ingredientRemoved }) => {
+const controls = ({ className, disabledInfo, ingredientAdded, ingredientRemoved }) => {
   const added = type => event => ingredientAdded(type);
   const removed = type => event => ingredientRemoved(type);
   return (
     <div className={className}>
       {items.map(item => (
-        <Control key={item.type} label={item.label} added={added(item.type)} removed={removed(item.type)} />
+        <Control
+          key={item.type}
+          label={item.label}
+          added={added(item.type)}
+          removed={removed(item.type)}
+          disabled={disabledInfo[item.type]}
+        />
       ))}
     </div>
   );

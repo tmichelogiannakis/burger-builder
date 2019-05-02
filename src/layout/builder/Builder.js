@@ -41,13 +41,18 @@ class Builder extends Component {
     });
   };
 
-  render() {
-
+  render() {    
+    const disabledInfo = Object.assign({}, ...Object.entries(this.state.ingredients).map(([key, value]) => ({ [key]: value < 1 })));
+ 
     return (
       <>
         <Burger ingredients={this.state.ingredients} />
         <div style={{ textAlign: 'center', marginBottom: '16px' }}>Total price: {this.state.totalPrice}</div>
-        <Controls ingredientAdded={this.addIngredientHandler} ingredientRemoved={this.removeIngredientHandler} />
+        <Controls
+          disabledInfo={disabledInfo}
+          ingredientAdded={this.addIngredientHandler}
+          ingredientRemoved={this.removeIngredientHandler}
+        />
       </>
     );
   }
