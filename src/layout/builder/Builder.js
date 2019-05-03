@@ -43,6 +43,7 @@ class Builder extends Component {
 
   render() {
     const disabledInfo = Object.assign({}, ...Object.entries(this.state.ingredients).map(([key, value]) => ({ [key]: value < 1 })));
+    const purchasable = Object.values(disabledInfo).some(item => !item);
 
     return (
       <>
@@ -54,6 +55,7 @@ class Builder extends Component {
           disabledInfo={disabledInfo}
           ingredientAdded={this.addIngredientHandler}
           ingredientRemoved={this.removeIngredientHandler}
+          purchasable={purchasable}
         />
       </>
     );
