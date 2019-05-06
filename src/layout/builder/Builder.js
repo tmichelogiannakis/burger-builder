@@ -19,7 +19,8 @@ class Builder extends Component {
       cheese: 0,
       meat: 0
     },
-    totalPrice: 4
+    totalPrice: 4,
+    purchasing: false
   };
 
   addIngredientHandler = type => {
@@ -43,15 +44,21 @@ class Builder extends Component {
     });
   };
 
+  orderClickHandler = event => {
+    console.log(event);
+    this.setState({ purchasing: true });
+  };
+
   render() {
     const disabledInfo = Object.assign({}, ...Object.entries(this.state.ingredients).map(([key, value]) => ({ [key]: value < 1 })));
     const purchasable = Object.values(disabledInfo).some(item => !item);
 
     return (
       <>
-        <Modal>
+        <Modal show={this.state.purchasing}>
           <OrderSummary ingredients={this.state.ingredients} />
         </Modal>
+
         <Burger ingredients={this.state.ingredients} />
         <div style={{ textAlign: 'center', marginBottom: '16px' }}>
           Total price: <strong>{this.state.totalPrice}</strong>
@@ -61,6 +68,7 @@ class Builder extends Component {
           ingredientAdded={this.addIngredientHandler}
           ingredientRemoved={this.removeIngredientHandler}
           purchasable={purchasable}
+          onOrderClick={this.orderClickHandler}
         />
       </>
     );

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const modal = ({ children, className }) => {
+const modal = ({ children, show, className }) => {
   return <div className={className}>{children}</div>;
 };
 
@@ -17,7 +17,8 @@ export default styled(modal)`
   top: 30%;
   box-sizing: border-box;
   transition: all 0.3s ease-out;
-
+  transform: ${props => (props.show ? 'translateY(0)' : 'translateY(10vh)')};
+  opacity: ${props => (props.show ? 1 : 0)};
   @media (min-width: 600px) {
     width: 500px;
     left: calc(50% - 250px);

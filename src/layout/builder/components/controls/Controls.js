@@ -49,7 +49,7 @@ const items = [
   { label: 'Salad', type: 'salad' }
 ];
 
-const controls = ({ className, disabledInfo, ingredientAdded, ingredientRemoved, purchasable }) => {
+const controls = ({ className, disabledInfo, ingredientAdded, ingredientRemoved, purchasable, onOrderClick }) => {
   const added = type => event => ingredientAdded(type);
   const removed = type => event => ingredientRemoved(type);
   return (
@@ -63,7 +63,7 @@ const controls = ({ className, disabledInfo, ingredientAdded, ingredientRemoved,
           disabled={disabledInfo[item.type]}
         />
       ))}
-      <OrderButton disabled={!purchasable}>ORDER NOW</OrderButton>
+      <OrderButton disabled={!purchasable} onClick={onOrderClick}>ORDER NOW</OrderButton>
     </div>
   );
 };
